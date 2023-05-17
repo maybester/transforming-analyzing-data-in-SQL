@@ -31,3 +31,17 @@ where surrogate_key not in (
 	group by visitid, fullvisitorid, unitprice
 );
 
+> remove duplicate values across rows fullvisitorid in table all_sessions
+
+alter table all_sessioins 
+add surrogate_key serial primary key;
+alter table all_sessions
+add primary key (surrogate_key);
+
+delete from all_sessions
+where surrogate_key not in (
+	select min(surrogate_key)
+	from all_sessions
+	group by fullvisitorid
+);
+
