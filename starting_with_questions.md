@@ -7,15 +7,23 @@ Answer the following questions and provide the SQL queries used to find the answ
 SQL Queries:
 
 select sum(totaltransactionrevenue) as transaction_revenue, country, city from all_sessions
+
 where totaltransactionrevenue is not null and city not like '%available%' 
+
 group by country, city
+
 order by transaction_revenue desc
+
 limit 1
 
 select sum(totaltransactionrevenue) as transaction_revenue, city from all_sessions
+
 where totaltransactionrevenue is not null and city not like '%available%'
+
 group by city
+
 order by transaction_revenue desc
+
 limit 1
 
 
