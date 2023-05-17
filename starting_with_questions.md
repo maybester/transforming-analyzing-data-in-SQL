@@ -125,9 +125,42 @@ Answer:
 
 SQL Queries:
 
+	select sum(ana.revenue) as total_revenue, aes.city from analytics ana
+
+	join all_sessions aes
+
+	on aes.fullvisitorid = ana.fullvisitorid
+
+	where aes.city !='(not set)' 
+
+	group by aes.city
+
+	order by total_revenue desc
+
+	limit 5
+	
+	
+	select sum(ana.revenue) as total_revenue, aes.country from analytics ana
+
+	join all_sessions aes
+
+	on aes.fullvisitorid = ana.fullvisitorid
+
+	where aes.country !='(not set)' 
+
+	group by aes.country
+
+	order by total_revenue desc
+
+	limit 5
+
 
 
 Answer:
+
+<img width="238" alt="image" src="https://github.com/maybester/transforming-analyzing-data-in-SQL/assets/73912419/86399fa7-19ce-4247-af30-29785a4c9807">
+<img width="242" alt="image" src="https://github.com/maybester/transforming-analyzing-data-in-SQL/assets/73912419/fd115c30-0049-43a9-be5e-345554f6d620">
+
 
 
 
