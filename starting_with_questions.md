@@ -114,10 +114,45 @@ Answer:
 
 SQL Queries:
 
+select 
+	sum(a.unit_sold) as totalunitsold, 
+
+	ase.city
+
+from analytics a 
+
+join all_sessions ase
+
+on ase.visitid = a.visitid
+
+where a.unit_sold is not null and city not like '%available%'
+group by ase.city
+
+order by totalunitsold desc;
+
+select 
+	sum(a.unit_sold) as totalunitsold, 
+
+	ase.country
+
+from analytics a 
+
+join all_sessions ase
+
+on ase.visitid = a.visitid
+
+where a.unit_sold is not null and country not like '%available%'
+group by ase.country
+
+order by totalunitsold desc;
+
+
 
 
 Answer:
 
+<img width="278" alt="image" src="https://github.com/maybester/transforming-analyzing-data-in-SQL/assets/73912419/88a5b540-679c-41d9-a1e6-686be7fa24cb">
+<img width="277" alt="image" src="https://github.com/maybester/transforming-analyzing-data-in-SQL/assets/73912419/dfedf83e-5380-4e9b-9864-97009361012b">
 
 
 
