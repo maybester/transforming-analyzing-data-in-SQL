@@ -84,35 +84,28 @@ Answer: chicago has the highest avg number of products ordered from visitors whi
 
 SQL Queries:
 
-    create view category_data as 
-    select 
-	ase.city, 
-	regexp_substr(ase.productcategory, '[^/]+',1,2) as categorynatype,
-	count(ase.productcategory) as ordered_num	
-	from all_sessions ase
-	where city !='(not set)' and productcategory != '(not set)'
-	group by ase.city, ase.productcategory
-	order by ase.city;
-    
-    
-    
-    
-    create view category_data_country as 
-    select 
-	ase.country, 
-	regexp_substr(ase.productcategory, '[^/]+',1,2) as categorynatype,
-	count(ase.productcategory) as ordered_num	
-	from all_sessions ase
-	where country !='(not set)' and productcategory != '(not set)'
-	group by ase.country, ase.productcategory
-	order by ase.country;
+  with category_info as (
+	select country as name,'country'as type, productcategory, avg(p.orderedquantity) as avgorderedproducts
+	from all_sessions aes
+	join products p on p.sku = aes.productsku
+	group by country, productcategory
+	union 
+	select city as name,'city'as type, productcategory, avg(p.orderedquantity) as avgorderedproducts
+	from all_sessions aes
+	join products p on p.sku = aes.productsku
+	group by city, productcategory
+)
 
+select name, type, productcategory,avgorderedproducts
+from category_info
+where type ='country'
+order by avgorderedproducts desc
+limit 5;
 
 
 Answer:
-
-
-
+<img width="603" alt="image" src="https://github.com/maybester/transforming-analyzing-data-in-SQL/assets/73912419/e0e6d18c-e5b3-470a-ac2c-efbc60e3f05b">
+<img width="608" alt="image" src="https://github.com/maybester/transforming-analyzing-data-in-SQL/assets/73912419/17b4c5d8-e95c-4ccf-a76f-f30bc10f5737">
 
 
 **Question 4: What is the top-selling product from each city/country? Can we find any pattern worthy of noting in the products sold?**
