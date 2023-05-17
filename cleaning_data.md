@@ -12,6 +12,12 @@ Below, provide the SQL queries you used to clean your data.
 
 update analytics set unitprice = unitprice * .000001;
 
+> convert totaltransactionrevenue and productprice in all_sessions table
+
+update all_sessions set totaltransactionrevenue = totaltransactionrevenue * .000001;
+
+update all_sessions set productprice = productprice * .000001;
+
 > remove duplicate values across columns visitid and visitstarttime in talbe analytics
 
 select * from analytics where visitid=visitstarttime;
