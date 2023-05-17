@@ -7,7 +7,8 @@ What issues will you address by cleaning the data?
 Queries:
 Below, provide the SQL queries you used to clean your data.
 
---convert unitcost in table analytics to maintain data accuracy
+
+#convert unitcost in table analytics to maintain data accuracy
 
 update analytics set unitprice = unitprice * .000001;
 
