@@ -6,25 +6,25 @@ Answer the following questions and provide the SQL queries used to find the answ
 
 SQL Queries:
 
-select sum(totaltransactionrevenue) as transaction_revenue, country, city from all_sessions
+    select sum(totaltransactionrevenue) as transaction_revenue, country, city from all_sessions
 
-where totaltransactionrevenue is not null and city not like '%available%' 
+    where totaltransactionrevenue is not null and city not like '%available%' 
 
-group by country, city
+    group by country, city
 
-order by transaction_revenue desc
+    order by transaction_revenue desc
 
-limit 1
+    limit 1
 
-select sum(totaltransactionrevenue) as transaction_revenue, city from all_sessions
+    select sum(totaltransactionrevenue) as transaction_revenue, city from all_sessions
 
-where totaltransactionrevenue is not null and city not like '%available%'
+    where totaltransactionrevenue is not null and city not like '%available%'
 
-group by city
+    group by city
 
-order by transaction_revenue desc
+    order by transaction_revenue desc
 
-limit 1
+    limit 1
 
 
 Answer: country with highest level is America, city with highest level is San Francisco
@@ -37,40 +37,40 @@ Answer: country with highest level is America, city with highest level is San Fr
 
 SQL Queries:
 
-select 
+    select 
     sum(a.unit_sold)/count(a.visitid) as avgunitsold, 
     
     sum(a.unit_sold) as totalunitsold, 
     
     count(a.visitid) as orderedvisitor, ase.city
     
-from analytics a 
+    from analytics a 
 
-join all_sessions ase
+    join all_sessions ase
 
-on ase.visitid = a.visitid
+    on ase.visitid = a.visitid
 
-where a.unit_sold is not null and city not like '%available%'
-group by ase.city
+    where a.unit_sold is not null and city not like '%available%'
+    group by ase.city
 
-order by avgunitsold desc;
+    order by avgunitsold desc;
 
-select 
+    select 
     sum(a.unit_sold)/count(a.visitid) as avgunitsold,
     
     sum(a.unit_sold) as totalunitsold, 
     
     count(a.visitid) as orderedvisitor, ase.country
     
-from analytics a 
+    from analytics a 
 
-join all_sessions ase
+    join all_sessions ase
 
-on ase.visitid = a.visitid
+    on ase.visitid = a.visitid
 
-where a.unit_sold is not null and city not like '%available%'
+    where a.unit_sold is not null and city not like '%available%'
 
-group by ase.country
+    group by ase.country
 
 Answer: chicago has the highest avg number of products ordered from visitors which is 5 products per visitor, while visitors from pittsburg avergely ordered 4 products per peroson, New York maintain 3 products per pserson.
 <img width="493" alt="image" src="https://github.com/maybester/transforming-analyzing-data-in-SQL/assets/73912419/92d3a2ab-a3ab-48b1-9cff-4e8734fa9f70"> <img width="475" alt="image" src="https://github.com/maybester/transforming-analyzing-data-in-SQL/assets/73912419/0b8f4286-63fb-45ae-a3e5-f96ddcff7d4c">
