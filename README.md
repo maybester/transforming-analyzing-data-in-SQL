@@ -1,13 +1,15 @@
 # Final-Project-Transforming-and-Analyzing-Data-with-SQL
 
 ## Project/Goals
-(fill in your description and goals here)
+USING ETL flow to extract, transform and load the data in ecommerce database to generate insights of the website business in different countries and cities.
 
-## Process
-### (your step 1)
-### (your step 2)
+## data extract 
 
-## Results
+### data cleaning
+
+### data transforming
+
+## analyzing Results
 (fill in what you discovered this data could tell you and how you used the data to answer those questions)
 
 ## Challenges 
