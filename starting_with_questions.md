@@ -39,10 +39,10 @@ Assumptions: since there are duplicate values in productsku in table all_session
 
 SQL Queries:
 
-    select 
-    sum(a.unit_sold)/count(a.visitid) as avgunitsold, 
+  	select 
+    	sum(a.unit_sold)/count(a.visitid) as avgunitsold, 
     
-    sum(a.unit_sold) as totalunitsold, 
+   	sum(a.unit_sold) as totalunitsold, 
     
     count(a.visitid) as orderedvisitor, ase.city
     
@@ -84,7 +84,7 @@ Answer: chicago has the highest avg number of products ordered from visitors whi
 
 SQL Queries:
 
-  with category_info as (
+  	with category_info as (
 	select country as name,'country'as type, productcategory, avg(p.orderedquantity) as avgorderedproducts
 	from all_sessions aes
 	join products p on p.sku = aes.productsku
@@ -94,13 +94,13 @@ SQL Queries:
 	from all_sessions aes
 	join products p on p.sku = aes.productsku
 	group by city, productcategory
-)
+	)
 
-select name, type, productcategory,avgorderedproducts
-from category_info
-where type ='country'
-order by avgorderedproducts desc
-limit 5;
+	select name, type, productcategory,avgorderedproducts
+	from category_info
+	where type ='country'
+	order by avgorderedproducts desc
+	limit 5;
 
 
 Answer:
