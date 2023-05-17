@@ -123,6 +123,8 @@ Answer:
 
 **Question 5: Can we summarize the impact of revenue generated from each city/country?**
 
+issues: large amount of missing data found in revenue column, which results in unable mathch of ids and the missing values in the total revenue for country and city in total.
+
 SQL Queries:
 
 	select sum(ana.revenue) as total_revenue, aes.city from analytics ana
