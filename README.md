@@ -3,9 +3,9 @@
 ## Project/Goals
 USING ETL flow to extract, transform and load the data in ecommerce database to generate insights of the website business in different countries and cities.
 
-## data extract 
+## data cleaning  
 
-### data cleaning
+### data extract
 
 ### data transforming
 
