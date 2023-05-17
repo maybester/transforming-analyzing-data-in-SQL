@@ -37,8 +37,31 @@ Answer: country with highest level is America, city with highest level is San Fr
 
 SQL Queries:
 
-select sum(a.unit_sold)/count(a.visitid) as totalunitsold, ase.city
+select 
+    sum(a.unit_sold)/count(a.visitid) as avgunitsold, 
+    
+    sum(a.unit_sold) as totalunitsold, 
+    
+    count(a.visitid) as orderedvisitor, ase.city
+    
+from analytics a 
 
+join all_sessions ase
+
+on ase.visitid = a.visitid
+
+where a.unit_sold is not null and city not like '%available%'
+group by ase.city
+
+order by avgunitsold desc;
+
+select 
+    sum(a.unit_sold)/count(a.visitid) as avgunitsold,
+    
+    sum(a.unit_sold) as totalunitsold, 
+    
+    count(a.visitid) as orderedvisitor, ase.country
+    
 from analytics a 
 
 join all_sessions ase
@@ -47,15 +70,11 @@ on ase.visitid = a.visitid
 
 where a.unit_sold is not null and city not like '%available%'
 
-group by ase.city
-
-order by totalunitsold desc
-
-limit 1;
-
+group by ase.country
 
 Answer: chicago has the highest avg number of products ordered from visitors which is 5 products per visitor, while visitors from pittsburg avergely ordered 4 products per peroson, New York maintain 3 products per pserson.
-<img width="493" alt="image" src="https://github.com/maybester/transforming-analyzing-data-in-SQL/assets/73912419/92d3a2ab-a3ab-48b1-9cff-4e8734fa9f70">
+<img width="493" alt="image" src="https://github.com/maybester/transforming-analyzing-data-in-SQL/assets/73912419/92d3a2ab-a3ab-48b1-9cff-4e8734fa9f70"> <img width="475" alt="image" src="https://github.com/maybester/transforming-analyzing-data-in-SQL/assets/73912419/0b8f4286-63fb-45ae-a3e5-f96ddcff7d4c">
+
 
 
 
