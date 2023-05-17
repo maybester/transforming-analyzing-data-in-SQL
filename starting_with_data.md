@@ -1,5 +1,5 @@
 Question 1: 
-
+## find duplicate values in fullvisitorid
 SQL Queries:
 
 Answer: 
@@ -7,7 +7,7 @@ Answer:
 
 
 Question 2: 
-
+## find the product searched by each visitor
 SQL Queries:
 
 Answer:
@@ -15,7 +15,7 @@ Answer:
 
 
 Question 3: 
-
+## 
 SQL Queries:
 
 Answer:
