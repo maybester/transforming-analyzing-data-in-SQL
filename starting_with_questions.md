@@ -114,37 +114,37 @@ Answer:
 
 SQL Queries:
 
-select 
+	select 
 	sum(a.unit_sold) as totalunitsold, 
 
 	ase.city
+	
+	from analytics a 
 
-from analytics a 
+	join all_sessions ase
 
-join all_sessions ase
+	on ase.visitid = a.visitid
 
-on ase.visitid = a.visitid
+	where a.unit_sold is not null and city not like '%available%'
+	group by ase.city
 
-where a.unit_sold is not null and city not like '%available%'
-group by ase.city
+	order by totalunitsold desc;
 
-order by totalunitsold desc;
-
-select 
+	select 
 	sum(a.unit_sold) as totalunitsold, 
 
 	ase.country
 
-from analytics a 
+	from analytics a 
 
-join all_sessions ase
+	join all_sessions ase
 
-on ase.visitid = a.visitid
+	on ase.visitid = a.visitid
 
-where a.unit_sold is not null and country not like '%available%'
-group by ase.country
+	where a.unit_sold is not null and country not like '%available%'
+	group by ase.country
 
-order by totalunitsold desc;
+	order by totalunitsold desc;
 
 
 
