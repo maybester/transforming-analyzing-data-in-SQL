@@ -104,6 +104,7 @@ SQL Queries:
 
 
 Answer:
+
 <img width="603" alt="image" src="https://github.com/maybester/transforming-analyzing-data-in-SQL/assets/73912419/e0e6d18c-e5b3-470a-ac2c-efbc60e3f05b">
 <img width="608" alt="image" src="https://github.com/maybester/transforming-analyzing-data-in-SQL/assets/73912419/17b4c5d8-e95c-4ccf-a76f-f30bc10f5737">
 
