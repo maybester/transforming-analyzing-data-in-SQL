@@ -151,8 +151,7 @@ SQL Queries:
 
 Answer:
 
-<img width="278" alt="image" src="https://github.com/maybester/transforming-analyzing-data-in-SQL/assets/73912419/88a5b540-679c-41d9-a1e6-686be7fa24cb">
-<img width="277" alt="image" src="https://github.com/maybester/transforming-analyzing-data-in-SQL/assets/73912419/dfedf83e-5380-4e9b-9864-97009361012b">
+<img width="746" alt="image" src="https://github.com/maybester/transforming-analyzing-data-in-SQL/assets/73912419/b64009dd-2e71-4e72-b97a-0054d28c82a1">
 
 
 
