@@ -7,7 +7,7 @@ Answer:
 
 
 Question 2: 
-## find the product searched by each visitor
+## find the different products searched by the same visitor
 SQL Queries:
 
 Answer:
@@ -15,7 +15,7 @@ Answer:
 
 
 Question 3: 
-## 
+## find records containing the same fullvisitorit but different visitid.
 SQL Queries:
 
 Answer:
