@@ -87,6 +87,29 @@ Answer: chicago has the highest avg number of products ordered from visitors whi
 
 SQL Queries:
 
+    create view category_data as 
+    select 
+	ase.city, 
+	regexp_substr(ase.productcategory, '[^/]+',1,2) as categorynatype,
+	count(ase.productcategory) as ordered_num	
+	from all_sessions ase
+	where city !='(not set)' and productcategory != '(not set)'
+	group by ase.city, ase.productcategory
+	order by ase.city;
+    
+    
+    
+    
+    create view category_data_country as 
+    select 
+	ase.country, 
+	regexp_substr(ase.productcategory, '[^/]+',1,2) as categorynatype,
+	count(ase.productcategory) as ordered_num	
+	from all_sessions ase
+	where country !='(not set)' and productcategory != '(not set)'
+	group by ase.country, ase.productcategory
+	order by ase.country;
+
 
 
 Answer:
