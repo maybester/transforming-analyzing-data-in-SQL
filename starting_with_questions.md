@@ -3,6 +3,7 @@ Answer the following questions and provide the SQL queries used to find the answ
     
 **Question 1: Which cities and countries have the highest level of transaction revenues on the site?**
 
+Assumptions: since the transaction revenue is not explained by the data, thus i assume the column totaltransactionrevenue --88 rows of data will be used for indicating the transaction revenue.
 
 SQL Queries:
 
@@ -27,7 +28,7 @@ SQL Queries:
     limit 1
 
 
-Answer: country with highest level is America, city with highest level is San Francisco
+Answer: country with highest level of transaction revenue is America,  while the city with highest level is San Francisco
 
 
 
