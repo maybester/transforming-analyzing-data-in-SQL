@@ -74,7 +74,7 @@ SQL Queries:
 
 Answer: chicago has the highest avg number of products ordered from visitors which is 5 products per visitor, while visitors from pittsburg avergely ordered 4 products per peroson, New York maintain 3 products per pserson.
  ![image](https://github.com/maybester/transforming-analyzing-data-in-SQL/assets/73912419/1f58b8b2-f0c9-47f1-bcd8-1750e71b98e4)
- <img width="475" alt="image" src="https://github.com/maybester/transforming-analyzing-data-in-SQL/assets/73912419/0b8f4286-63fb-45ae-a3e5-f96ddcff7d4c">
+ ![image](https://github.com/maybester/transforming-analyzing-data-in-SQL/assets/73912419/70266098-5b22-4392-bf8e-ebf10fc19ea2)
 
 
 
