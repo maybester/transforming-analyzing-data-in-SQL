@@ -1,53 +1,50 @@
-What issues will you address by cleaning the data?
+## Part 2: Data Cleaning
+
+> cleaning_data.md file
+> * Fill out this file with a description of the issues that will be addressed by cleaning the data
+> * Include the queries used to clean the data
 
 
+Issue #1: The unit cost in the data needs to be divided by 1,000,000.
 
+```
+update analytics
+set unit_price = unit_price/1000000;
+```
 
+Issue #2: Identify columns only contain null values and consider to drop.
 
-Queries:
-Below, provide the SQL queries you used to clean your data.
+```
+select count(*) from all_sessions where itemquantity is not null
+select count(*) from all_sessions where itemrevenue is not null
+select count(*) from all_sessions where searchkeyword is not null
 
+--all return 0 
 
-> convert unitcost in table analytics to maintain data accuracy in table analytics
-
-update analytics set unitprice = unitprice * .000001;
-
-> convert totaltransactionrevenue and productprice in all_sessions table
-
-update all_sessions set totaltransactionrevenue = totaltransactionrevenue * .000001;
-
-update all_sessions set productprice = productprice * .000001;
-
-> remove duplicate values across columns visitid and visitstarttime in talbe analytics
-
-select * from analytics where visitid=visitstarttime;
-alter table analytics drop visitstarttime;
-
-> remove duplicate values across rows visitid in table analytics
-
-alter table analytics 
-add surrogate_key serial primary key;
-alter table analytics
-add primary key (surrogate_key);
-
-delete from analytics
-where surrogate_key not in (
-	select min(surrogate_key)
-	from analytics
-	group by visitid, fullvisitorid, unitprice
-);
-
-> remove duplicate values across rows fullvisitorid in table all_sessions
-
-alter table all_sessioins 
-add surrogate_key serial primary key;
 alter table all_sessions
-add primary key (surrogate_key);
+drop column itemquantity;
 
-delete from all_sessions
-where surrogate_key not in (
-	select min(surrogate_key)
-	from all_sessions
-	group by fullvisitorid
-);
+alter table all_sessions
+drop column itemrevenue;
 
+alter table all_sessions
+drop column searchkeyword;
+```
+
+Issue #3: Explore dulicate values in analytics and all_sessions.
+
+```
+select visitid, count(visitid) 
+from all_sessions 
+group by visitid 
+having count(visitid)>1;
+--return 553 rows of duplicates in visitid
+
+select fullvisitorid, count(fullvisitorid) 
+from all_sessions 
+group by fullvisitorid 
+having count(fullvisitorid)>1;
+--return 794 rows of duplicates in fullvisitorid
+
+```
+Since duplicate values exist in fullvisitorid and visitid, primary key cannot be defined in both analytics and all_sessions tables.
