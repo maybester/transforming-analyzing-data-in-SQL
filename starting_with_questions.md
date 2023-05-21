@@ -36,31 +36,6 @@ order by sum(productprice) desc
 limit 5
 
 ```
-    select sum(totaltransactionrevenue) as transaction_revenue, country, city from all_sessions
-
-    where totaltransactionrevenue is not null and city not like '%available%' 
-
-    group by country, city
-
-    order by transaction_revenue desc
-
-    limit 1
-
-    select sum(totaltransactionrevenue) as transaction_revenue, city from all_sessions
-
-    where totaltransactionrevenue is not null and city not like '%available%'
-
-    group by city
-
-    order by transaction_revenue desc
-
-    limit 1
-
-
-Answer: country with highest level of transaction revenue is America,  while the city with highest level is San Francisco
-
-
-
 
 ### Question #2: What is the average number of products ordered from visitors in each city and country?**
 
