@@ -1,5 +1,8 @@
-Answer the following questions and provide the SQL queries used to find the answer.
+## Part 2: Starting with Questions
 
+>startingwithquestions.md file
+>
+> * Provide the answer to the 5 questions and the queries used to answer each question
     
 **Question 1: Which cities and countries have the highest level of transaction revenues on the site?**
 
