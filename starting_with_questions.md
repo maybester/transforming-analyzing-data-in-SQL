@@ -39,7 +39,12 @@ limit 5
 
 ### Question #2: What is the average number of products ordered from visitors in each city and country?**
 
-Assumptions: since there are duplicate values in productsku in table all_sessions, thus decided to map the unitsold through visitor ids in analytics table.
+
+
+For each order of same product type, there is a unique sku number to represent the order.
+```
+select * from products order by name
+```
 
 SQL Queries:
 
