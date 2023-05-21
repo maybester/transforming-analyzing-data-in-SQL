@@ -4,7 +4,7 @@
 >
 > * Provide the answer to the 5 questions and the queries used to answer each question
     
-**Question 1: Which cities and countries have the highest level of transaction revenues on the site?**
+### Question #1: Which cities and countries have the highest level of transaction revenues on the site?**
 
 Assumptions: since the transaction revenue is not explained by the data, thus i assume the column totaltransactionrevenue --88 rows of data will be used for indicating the transaction revenue.
 
@@ -36,7 +36,7 @@ Answer: country with highest level of transaction revenue is America,  while the
 
 
 
-**Question 2: What is the average number of products ordered from visitors in each city and country?**
+### Question #2: What is the average number of products ordered from visitors in each city and country?**
 
 Assumptions: since there are duplicate values in productsku in table all_sessions, thus decided to map the unitsold through visitor ids in analytics table.
 
@@ -82,7 +82,7 @@ Answer: chicago has the highest avg number of products ordered from visitors whi
  ![image](https://github.com/maybester/transforming-analyzing-data-in-SQL/assets/73912419/70266098-5b22-4392-bf8e-ebf10fc19ea2)
 
 
-**Question 3: Is there any pattern in the types (product categories) of products ordered from visitors in each city and country?**
+### Question #3: Is there any pattern in the types (product categories) of products ordered from visitors in each city and country?**
 
 
 SQL Queries:
@@ -112,7 +112,7 @@ Answer:
 <img width="608" alt="image" src="https://github.com/maybester/transforming-analyzing-data-in-SQL/assets/73912419/17b4c5d8-e95c-4ccf-a76f-f30bc10f5737">
 
 
-**Question 4: What is the top-selling product from each city/country? Can we find any pattern worthy of noting in the products sold?**
+### Question #4: What is the top-selling product from each city/country? Can we find any pattern worthy of noting in the products sold?**
 
 
 SQL Queries:
@@ -159,7 +159,7 @@ Answer:
 
 
 
-**Question 5: Can we summarize the impact of revenue generated from each city/country?**
+### Question #5: Can we summarize the impact of revenue generated from each city/country?**
 
 issues: large amount of missing data found in revenue column, which results in unable mathch of ids and the missing values in the total revenue for country and city in total.
 
