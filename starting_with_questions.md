@@ -8,8 +8,26 @@
 
 Assumptions: since the transaction revenue is not explained by the data, thus i assume the column totaltransactionrevenue --88 rows of data will be used for indicating the transaction revenue.
 
-SQL Queries:
+```
+-- Top 5 cities with highest transaction revenues
 
+select city, sum(productprice) as transaction_revenues
+from all_sessions
+where city != 'not available in demo dataset'
+group by city
+order by sum(productprice) desc
+limit 5
+
+-- Top 5 countries with highest transaction revenues
+
+select city, sum(productprice) as transaction_revenues
+from all_sessions
+where city != 'not available in demo dataset'
+group by city
+order by sum(productprice) desc
+limit 5
+
+```
     select sum(totaltransactionrevenue) as transaction_revenue, country, city from all_sessions
 
     where totaltransactionrevenue is not null and city not like '%available%' 
