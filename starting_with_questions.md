@@ -4,9 +4,17 @@
 >
 > * Provide the answer to the 5 questions and the queries used to answer each question
     
-### Question #1: Which cities and countries have the highest level of transaction revenues on the site?**
+### Question #1: Which cities and countries have the highest level of transaction revenues on the site?
 
-Assumptions: since the transaction revenue is not explained by the data, thus i assume the column totaltransactionrevenue --88 rows of data will be used for indicating the transaction revenue.
+Transaction revenue is not defined in the table, we assume transaction revenue is equal to the price amount that customers paied for the products. Thus, we choose product price (15134 rows) to represent the transaction revenue instead total transaction revenue (81 rows).
+
+```
+select * from all_sessions where totaltransactionrevenue is not null -- Return 81 rows of data
+
+select * from all_sessions where productprice is not null -- Return with 15134 rows of data
+
+```
+Answer: United States is the country with the highest level of transaction revenue, Mountain View is the city with the highest level of transaction level.
 
 ```
 -- Top 5 cities with highest transaction revenues
