@@ -39,54 +39,38 @@ limit 5
 
 ### Question #2: What is the average number of products ordered from visitors in each city and country?**
 
+Quantity is the amount or numerical value, while the unit is the measurement, thus we use product quantity for representing the number of products ordered instead units sold. However, in product quantity of all_sessions table contains only 53 rows of data, thus we would like to use ordered quantity from table products (1092 rows).
 
+```
+select * from all_sessions where productquantity is not null -- Return 53 rows of data.
+
+select * from products where orderedquantity is not null -- Return 1092 rows of data
+```
 
 For each order of same product type, there is a unique sku number to represent the order.
 ```
 select * from products order by name
 ```
+Answer: Council Bluffs is the city with the highest average number of products from visitors, United States is the country with the highest average number of products from visitors.
+```
+-- Return top 5 cities with the highest average number of products ordered from visitors
 
-SQL Queries:
+select als.city, round(avg(p.orderedquantity),2) as avgprooductordered
+from all_sessions als
+join products p on p.sku = als.productsku
+group by city
+order by avgprooductordered desc
+limit 5
 
-  	select 
-    	sum(a.unit_sold)/count(a.visitid) as avgunitsold, 
-    
-   	sum(a.unit_sold) as totalunitsold, 
-    
-    count(a.visitid) as orderedvisitor, ase.city
-    
-    from analytics a 
+-- Return top 5 countries with the highest average number of products ordered from visitors
 
-    join all_sessions ase
-
-    on ase.visitid = a.visitid
-
-    where a.unit_sold is not null and city not like '%available%'
-    group by ase.city
-
-    order by avgunitsold desc;
-
-    select 
-    sum(a.unit_sold)/count(a.visitid) as avgunitsold,
-    
-    sum(a.unit_sold) as totalunitsold, 
-    
-    count(a.visitid) as orderedvisitor, ase.country
-    
-    from analytics a 
-
-    join all_sessions ase
-
-    on ase.visitid = a.visitid
-
-    where a.unit_sold is not null and city not like '%available%'
-
-    group by ase.country
-
-Answer: chicago has the highest avg number of products ordered from visitors which is 5 products per visitor, while visitors from pittsburg avergely ordered 4 products per peroson, New York maintain 3 products per pserson.
- ![image](https://github.com/maybester/transforming-analyzing-data-in-SQL/assets/73912419/1f58b8b2-f0c9-47f1-bcd8-1750e71b98e4)
- ![image](https://github.com/maybester/transforming-analyzing-data-in-SQL/assets/73912419/70266098-5b22-4392-bf8e-ebf10fc19ea2)
-
+select als.country, round(avg(p.orderedquantity),2) as avgprooductordered
+from all_sessions als
+join products p on p.sku = als.productsku
+group by country
+order by avgprooductordered desc
+limit 5
+```  
 
 ### Question #3: Is there any pattern in the types (product categories) of products ordered from visitors in each city and country?**
 
