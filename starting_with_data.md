@@ -4,40 +4,26 @@
 >* Provide the 3 - 5 new questions you decided could be answered with the data
 >* Include the answer to each question and the accompanying queries used to obtain the answer
 
-Question 1: 
-## find duplicate values in fullvisitorid
-SQL Queries:
+### Question #1: find duplicate values in fullvisitorid
 
-Answer: 
+#### Answer: 
 
 
 
-Question 2: 
-## find the different products searched by the same visitor
-SQL Queries:
+### Question #2: find the different products searched by the same visitor
 
-Answer:
+#### Answer:
 
 
 
-Question 3: 
-## find records containing the same fullvisitorit but different visitid.
-SQL Queries:
+### Question #3: find records containing the same fullvisitorit but different visitid.
 
-Answer:
+#### Answer:
 
 
 
-Question 4: 
-
-SQL Queries:
-
-Answer:
 
 
 
-Question 5: 
 
-SQL Queries:
 
-Answer:
