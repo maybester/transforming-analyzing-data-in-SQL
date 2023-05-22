@@ -39,22 +39,23 @@ drop column searchkeyword;
 
 * convert unit in columns units_price
 ```
-
-
+update analytics
+set unit_price = unit_price/1000000;
 ```
 * convert data type of time 
 ```
-
+select convert(varchar,time / 60) + ':' + right('00' + convert(varchar,time % 60),2)
+from all_sessions
 ```
 
 #### Accuracy
+* check the extremme values in numeric columns
 
 #### Timeliness
 * check the order date to be in reasonable range
 
 #### Consistency
 * check the currency column
-
 
 #### Uniqueness
 * check and drop unnecessary duplicate values
