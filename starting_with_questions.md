@@ -143,48 +143,22 @@ select * from added_row_number_countryas where row_number = 1
 
 ### Question #5: Can we summarize the impact of revenue generated from each city/country?
 
-issues: large amount of missing data found in revenue column, which results in unable mathch of ids and the missing values in the total revenue for country and city in total.
+#### answer: Mountain View has the biggest impact on generating the revenue among all the cities, and USA has the biggest impact on generating the revenue among all the countries.
 
-SQL Queries:
+'''
+select city, sum(a.revenue) as total_revenue from all_sessions als
+join analytics a on a.fullvisitorid = als.fullvisitorid
+where a.revenue is not null and city not in ('not available in demo dataset', '(not set)')
+group by city
+order by total_revenue desc
 
-	select sum(ana.revenue) as total_revenue, aes.city from analytics ana
+select country, sum(a.revenue) as total_revenue from all_sessions als
+join analytics a on a.fullvisitorid = als.fullvisitorid
+where a.revenue is not null
+group by country
+order by total_revenue desc
 
-	join all_sessions aes
-
-	on aes.fullvisitorid = ana.fullvisitorid
-
-	where aes.city !='(not set)' 
-
-	group by aes.city
-
-	order by total_revenue desc
-
-	limit 5
-	
-	
-	select sum(ana.revenue) as total_revenue, aes.country from analytics ana
-
-	join all_sessions aes
-
-	on aes.fullvisitorid = ana.fullvisitorid
-
-	where aes.country !='(not set)' 
-
-	group by aes.country
-
-	order by total_revenue desc
-
-	limit 5
-
-
-
-Answer:
-
-<img width="238" alt="image" src="https://github.com/maybester/transforming-analyzing-data-in-SQL/assets/73912419/86399fa7-19ce-4247-af30-29785a4c9807">
-<img width="242" alt="image" src="https://github.com/maybester/transforming-analyzing-data-in-SQL/assets/73912419/fd115c30-0049-43a9-be5e-345554f6d620">
-
-
-
+'''
 
 
 
