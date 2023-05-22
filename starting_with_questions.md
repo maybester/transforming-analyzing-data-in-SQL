@@ -130,13 +130,15 @@ select * from added_row_number where row_number =1
 
 -- top selling product in each country
 
-select als.country, als.productname,sum(a.units_sold) as totalproductordered
+with added_row_number_countryas as ( select als.country, als.productname,sum(a.units_sold) as totalproductordered,
+	row_number() over(partition by country order by sum(a.units_sold) desc) as row_number
 from all_sessions als
 join analytics a on a.fullvisitorid = als.fullvisitorid
 where units_sold is not null and city not in('(not set)','not available in demo dataset')
 group by country,productname
-order by totalproductordered desc
+order by totalproductordered desc)
 
+select * from added_row_number_countryas where row_number = 1
 ```
 
 ### Question #5: Can we summarize the impact of revenue generated from each city/country?
