@@ -1,7 +1,14 @@
 # Final-Project-Transforming-and-Analyzing-Data-with-SQL
 
 ## Project/Goals
-USING ETL flow to extract, transform and load the data in ecommerce database to generate insights of the business on websites in different countries and cities.
+>* Extracting data from a SQL database
+>
+>* Cleaning, transforming and analyzing data
+>
+>* Loading data into a database
+>
+>* Developing and implementing a QA process to validate transformed data against raw data
+
 
 ## data process  
 **1. data from import 5 csv files into ecommerce databases, define the right data types for each columns.
