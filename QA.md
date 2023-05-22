@@ -8,7 +8,7 @@
 ### What are your risk areas? Identify and describe them.
 | Risk area  | description |
 | ------------- | ------------- |
-| data source quality  | data source contained missing values and affect data consistence and copleteness.|
+| data source quality  | data source contained missing values and affect data consistency and copleteness.|
 | data relationship  | lack of documentation to explain the relationship between columns across different tables.  |
 | data definition  | data type such as time is not defined in the data source, the units for numeric measurement are also undefined. |
 
@@ -16,6 +16,17 @@
 ### Data quality dimensions
 
 #### Completeness
+
+* replace missing values in numeric columns with value 0
+```
+select replace(null,null,0) as revenue from analytics
+select replace(null,null,0) as totaltransactionrevenue from all_sessions
+```
+* drop columns only containing missing values
+```
+
+
+```
 
 #### Validity
 
