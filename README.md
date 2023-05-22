@@ -403,7 +403,15 @@ Create database ecommerce to extract, transform and analyse the data to create m
 ```
 
 ## Challenges 
-(discuss challenges you faced in the project)
+
+| Risk area  | description |
+| ------------- | ------------- |
+| data source quality  | data source contained missing values and affect data consistency and copleteness.|
+| data relationship  | lack of documentation to explain the relationship between columns across different tables.  |
+| data definition  | data type such as time is not defined in the data source, the units for numeric measurement are also undefined. |
 
 ## Future Goals
-(what would you do if you had more time?)
+
+* Further explore the relationship between table all_sessions and analytics.
+* Further explore the relationship between totalordered in sales_by_sku table and ordered quantity in products table.
+
