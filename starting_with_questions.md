@@ -118,13 +118,15 @@ order by totalprooductordered desc
 ```
 -- top selling peoduct in each city
 
-select als.city, als.productname,sum(a.units_sold) as totalproductordered
+with added_row_number as (select als.city, als.productname,sum(a.units_sold) as totalproductordered, 
+	row_number() over(partition by city order by sum(a.units_sold) desc)as row_number
 from all_sessions als
 join analytics a on a.fullvisitorid = als.fullvisitorid
 where units_sold is not null and city not in('(not set)','not available in demo dataset')
 group by city,productname
-order by totalproductordered desc
-limit 10
+order by totalproductordered desc)
+
+select * from added_row_number where row_number =1
 
 -- top selling product in each country
 
