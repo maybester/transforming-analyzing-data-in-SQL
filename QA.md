@@ -59,5 +59,17 @@ from all_sessions
 
 #### Uniqueness
 * check and drop unnecessary duplicate values
+duplicate values of id columns contained different sku, thus decide not to drop.
+```
+select visitid, count(visitid) 
+from all_sessions 
+group by visitid 
+having count(visitid)>1;
+--return 553 rows of duplicates in visitid
 
-
+select fullvisitorid, count(fullvisitorid) 
+from all_sessions 
+group by fullvisitorid 
+having count(fullvisitorid)>1;
+--return 794 rows of duplicates in fullvisitorid
+```
