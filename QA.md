@@ -1,4 +1,4 @@
-## Part 4: Quanlity Assurance
+## Part 4: Quality Assessment
 
 >QA.md file
 >
@@ -6,20 +6,20 @@
 >* Develop and execute a QA process to address the risk areas identified, providing the SQL queries used to implement
 
 ### What are your risk areas? Identify and describe them.
-
-
+| Risk area  | description |
+| ------------- | ------------- |
+| data source quality  | data source contained missing values and affect data consistence and copleteness.|
+| data relationship  | lack of documentation to explain the relationship between columns across different tables.  |
+| data definition  | data type such as time is not defined in the data source, the units for numeric measurement are also undefined. |
 
 
 ### Data quality dimensions
 
 #### Completeness
-> data source is lack of consistency since there are content in different language in pagetitle column.
 
 #### Validity
-> duplicates value existed in fullvisitor id columns which make table unable to have unique identifier for creating primary keys.
 
 #### Accuracy
-> data source has missing values in multiple columns in tables analytics and all_sessions.
 
 #### Timeliness
 
