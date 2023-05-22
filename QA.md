@@ -1,9 +1,15 @@
-What are your risk areas? Identify and describe them.
+## Part 4: Quanlity Assurance
+
+>QA.md file
+>
+>* Identify and describe your risk areas
+>* Develop and execute a QA process to address the risk areas identified, providing the SQL queries used to implement
+
+### What are your risk areas? Identify and describe them.
 
 
 
-QA Process:
-Describe your QA process and include the SQL queries used to execute it.
+### QA Process:
 
 # QA goals
 ## consistency
