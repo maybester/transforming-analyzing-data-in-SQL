@@ -2,7 +2,10 @@
 
 ## Project/Goals
 
+Create database ecommerce to extract, transform and analyse the data to create meaningful business insights for the website owner.
+
 ## data process  
+
 >* Extracting data from a SQL database
 >
 >* Cleaning, transforming and analyzing data
@@ -12,12 +15,27 @@
 >* Developing and implementing a QA process to validate transformed data against raw data
 
 
-
-## analyzing Results
+## Analyzing Results
 
 #### Question 1: Which cities and countries have the highest level of transaction revenues on the site?
-
-
+* Top city
+```
+"city"	"transaction_revenues"
+"Mountain View"	47333200000
+"New York"	19880210000
+"San Francisco"	15841040000
+"Sunnyvale"	13959810000
+"San Jose"	8080470000
+```
+* Top country
+```
+"country"	"transaction_revenues"
+"United States"	161066150000
+"India"	8854600000
+"United Kingdom"	6097710000
+"Canada"	5259000000
+"Australia"	3619580000
+```
 
 #### Question 2: What is the average number of products ordered from visitors in each city and country?
 
@@ -383,6 +401,7 @@
 "Switzerland"	16990000
 
 ```
+
 ## Challenges 
 (discuss challenges you faced in the project)
 
