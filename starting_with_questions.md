@@ -74,11 +74,12 @@ limit 5
 
 ### Question #3: Is there any pattern in the types (product categories) of products ordered from visitors in each city and country?
 
-To study the patter in the types of products ordered, we used product category to investigate the search path of visitors and product name for the exact product that visitors purchased. 
+To study the pattern in the types of products ordered, we used product category to investigate the search path of visitors and product name for the exact product that visitors purchased. 
 
 ```
 -- The product with highest average number ordered by visitors is Google Kick Ball and is listed under category sports&fitness and fun.
 -- The same situation happened both in cities and countries.
+
 select als.city, als.productcategory, als.productname, round(avg(p.orderedquantity),2) as avgprooductordered
 from all_sessions als
 join products p on p.sku = als.productsku
@@ -95,7 +96,23 @@ order by avgprooductordered desc
 limit 10
 
 ```
+```
+-- The product with highest ordered amount is Nest® Cam Indoor Security Camera of the nest category in city mountain view but kicking ball is still the highest ordered amount in USA.
 
+select als.city, als.productcategory, als.productname, sum(p.orderedquantity) as totalprooductordered
+from all_sessions als
+join products p on p.sku = als.productsku
+where city not in ('not available in demo dataset', '(not set)')
+group by city, productcategory, productname
+order by totalprooductordered desc
+
+select als.country, als.productcategory, sum(p.orderedquantity) as totalprooductordered
+from all_sessions als
+join products p on p.sku = als.productsku
+group by country, productcategory
+order by totalprooductordered desc
+
+```
 
 
 ### Question #4: What is the top-selling product from each city/country? Can we find any pattern worthy of noting in the products sold?
