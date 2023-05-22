@@ -116,42 +116,27 @@ order by totalprooductordered desc
 
 ### Question #4: What is the top-selling product from each city/country? Can we find any pattern worthy of noting in the products sold?
 
+```
+-- top selling peoduct in each city
 
+select als.city, als.productname,sum(a.units_sold) as totalproductordered
+from all_sessions als
+join analytics a on a.fullvisitorid = als.fullvisitorid
+where units_sold is not null and city not in('(not set)','not available in demo dataset')
+group by city,productname
+order by totalproductordered desc
+limit 10
 
+-- top selling product in each country
 
-	select 
-	sum(a.unit_sold) as totalunitsold, 
+select als.country, als.productname,sum(a.units_sold) as totalproductordered
+from all_sessions als
+join analytics a on a.fullvisitorid = als.fullvisitorid
+where units_sold is not null and city not in('(not set)','not available in demo dataset')
+group by country,productname
+order by totalproductordered desc
 
-	ase.city
-	
-	from analytics a 
-
-	join all_sessions ase
-
-	on ase.visitid = a.visitid
-
-	where a.unit_sold is not null and city not like '%available%'
-	group by ase.city
-
-	order by totalunitsold desc;
-
-	select 
-	sum(a.unit_sold) as totalunitsold, 
-
-	ase.country
-
-	from analytics a 
-
-	join all_sessions ase
-
-	on ase.visitid = a.visitid
-
-	where a.unit_sold is not null and country not like '%available%'
-	group by ase.country
-
-	order by totalunitsold desc;
-
-
+```
 
 
 
