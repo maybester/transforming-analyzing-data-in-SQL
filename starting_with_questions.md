@@ -78,36 +78,45 @@ To study the pattern in the types of products ordered, we used product category 
 
 #### answer: The product with highest average number ordered by visitors among all the cities and countries is Google Kick Ball and is listed under category sports&fitness and fun.  
 ```
-select als.city, als.productcategory, als.productname, round(avg(p.orderedquantity),2) as avgprooductordered
+select als.city, als.productcategory, als.productname, round(avg(a.units_sold),2) as avgprooductordered
 from all_sessions als
-join products p on p.sku = als.productsku
-where city != 'not available in demo dataset'
+join analytics a on a.fullvisitorid = als.fullvisitorid
+where units_sold is not null and city != '(not set)'
 group by city, productcategory, productname
 order by avgprooductordered desc
 limit 5
 
-select als.country, als.productcategory, als.productname, round(avg(p.orderedquantity),2) as avgprooductordered
+with added_row_number_3 as (select als.country, als.productcategory, als.productname, round(avg(a.units_sold),2) as avgprooductordered,
+	row_number() over(partition by country order by round(avg(a.units_sold),2) desc) as row_number
 from all_sessions als
-join products p on p.sku = als.productsku
+join analytics a on a.fullvisitorid = als.fullvisitorid
+where units_sold is not null and city != '(not set)'
 group by country, productcategory, productname
-order by avgprooductordered desc
-limit 10
+order by avgprooductordered desc)
+select * from added_row_number_3 where row_number = 1 
 
 ```
 #### answer: The product with highest ordered amount is Nest® Cam Indoor Security Camera of the nest category in city mountain view but kicking ball is still the highest ordered amount in USA.
 ```
-select als.city, als.productcategory, als.productname, sum(p.orderedquantity) as totalprooductordered
+with row_number_4 as (select als.city, als.productcategory, als.productname, sum(a.units_sold) as totalprooductordered,
+	row_number() over(partition by city order by sum(a.units_sold) desc) as row_number
 from all_sessions als
-join products p on p.sku = als.productsku
-where city not in ('not available in demo dataset', '(not set)')
+join analytics a on a.fullvisitorid = als.fullvisitorid
+where units_sold is not null and city not in ('not available in demo dataset','(not set)')
 group by city, productcategory, productname
-order by totalprooductordered desc
+order by totalprooductordered desc)
 
-select als.country, als.productcategory, sum(p.orderedquantity) as totalprooductordered
+select * from row_number_4 where row_number = 1
+
+
+with added_row as (select als.country, als.productcategory,als.productname, sum(p.orderedquantity) as totalprooductordered,
+	row_number() over(partition by country order by sum(p.orderedquantity) desc ) as row_number
 from all_sessions als
 join products p on p.sku = als.productsku
-group by country, productcategory
-order by totalprooductordered desc
+group by country, productcategory,productname
+order by totalprooductordered desc)
+
+select * from added_row where row_number =1
 
 ```
 
