@@ -47,29 +47,29 @@ select * from all_sessions where productquantity is not null -- Return 53 rows o
 select * from products where orderedquantity is not null -- Return 1092 rows of data
 ```
 
-For each order of same product type, there is a unique sku number to represent the order.
-```
-select * from products order by name
-```
-Answer: Council Bluffs is the city with the highest average number of products from visitors, United States is the country with the highest average number of products from visitors.
+
+Answer:  San Bruno is the city with the highest average number of products from visitors, United States is the country with the highest average number of products from visitors.
 ```
 -- Return top 5 cities with the highest average number of products ordered from visitors
 
-select als.city, round(avg(p.orderedquantity),2) as avgprooductordered
+select als.city, round(avg(a.units_sold),2) as avgproductordered
 from all_sessions als
-join products p on p.sku = als.productsku
+join analytics a on a.fullvisitorid = als.fullvisitorid
+where units_sold is not null and city not in('(not set)','not available in demo dataset')
 group by city
-order by avgprooductordered desc
-limit 5
+order by avgproductordered desc
+limit 10
+
 
 -- Return top 5 countries with the highest average number of products ordered from visitors
 
-select als.country, round(avg(p.orderedquantity),2) as avgprooductordered
+select als.city, round(avg(a.units_sold),2) as avgproductordered
 from all_sessions als
-join products p on p.sku = als.productsku
-group by country
-order by avgprooductordered desc
-limit 5
+join analytics a on a.fullvisitorid = als.fullvisitorid
+where units_sold is not null and city not in('(not set)','not available in demo dataset')
+group by city
+order by avgproductordered desc
+limit 10
 ```  
 
 ### Question #3: Is there any pattern in the types (product categories) of products ordered from visitors in each city and country?
