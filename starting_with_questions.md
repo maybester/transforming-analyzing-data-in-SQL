@@ -39,12 +39,12 @@ limit 5
 
 ### Question #2: What is the average number of products ordered from visitors in each city and country?**
 
-Quantity is the amount or numerical value, while the unit is the measurement, thus we use product quantity for representing the number of products ordered instead units sold. However, in product quantity of all_sessions table contains only 53 rows of data, thus we would like to use ordered quantity from table products (1092 rows).
+Order quantity in table products is representing the total ordered amount of each sku (product type) while the units_sold is representing the ordered amount by each individual. thus we use units_sold for representing the number of products ordered instead orderedquantity. Meanwile, in product quantity of all_sessions table contains only 53 rows of data, thus we would like to use units_sold (95147 rows).
 
 ```
 select * from all_sessions where productquantity is not null -- Return 53 rows of data.
 
-select * from products where orderedquantity is not null -- Return 1092 rows of data
+select * from analytics where units_sold is not null -- Return 95147 rows of data
 ```
 
 
