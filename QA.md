@@ -24,16 +24,39 @@ select replace(null,null,0) as totaltransactionrevenue from all_sessions
 ```
 * drop columns only containing missing values
 ```
+alter table all_sessions
+drop column itemquantity;
 
+alter table all_sessions
+drop column itemrevenue;
+
+alter table all_sessions
+drop column searchkeyword;
 
 ```
 
 #### Validity
 
+* convert unit in columns units_price
+```
+
+
+```
+* convert data type of time 
+```
+
+```
+
 #### Accuracy
 
 #### Timeliness
+* check the order date to be in reasonable range
 
 #### Consistency
+* check the currency column
+
 
 #### Uniqueness
+* check and drop unnecessary duplicate values
+
+
