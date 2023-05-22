@@ -114,11 +114,10 @@ order by totalprooductordered desc
 
 ```
 
-
 ### Question #4: What is the top-selling product from each city/country? Can we find any pattern worthy of noting in the products sold?
 
 
-SQL Queries:
+
 
 	select 
 	sum(a.unit_sold) as totalunitsold, 
@@ -155,14 +154,10 @@ SQL Queries:
 
 
 
-Answer:
-
-<img width="746" alt="image" src="https://github.com/maybester/transforming-analyzing-data-in-SQL/assets/73912419/b64009dd-2e71-4e72-b97a-0054d28c82a1">
 
 
 
-
-### Question #5: Can we summarize the impact of revenue generated from each city/country?**
+### Question #5: Can we summarize the impact of revenue generated from each city/country?
 
 issues: large amount of missing data found in revenue column, which results in unable mathch of ids and the missing values in the total revenue for country and city in total.
 
