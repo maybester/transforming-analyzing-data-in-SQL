@@ -146,6 +146,7 @@ select * from added_row_number_countryas where row_number = 1
 #### answer: Mountain View has the biggest impact on generating the revenue among all the cities, and USA has the biggest impact on generating the revenue among all the countries.
 
 '''
+
 select city, sum(a.revenue) as total_revenue from all_sessions als
 join analytics a on a.fullvisitorid = als.fullvisitorid
 where a.revenue is not null and city not in ('not available in demo dataset', '(not set)')
