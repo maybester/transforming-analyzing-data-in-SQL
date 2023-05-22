@@ -72,37 +72,33 @@ order by avgprooductordered desc
 limit 5
 ```  
 
-### Question #3: Is there any pattern in the types (product categories) of products ordered from visitors in each city and country?**
+### Question #3: Is there any pattern in the types (product categories) of products ordered from visitors in each city and country?
+
+To study the patter in the types of products ordered, we used product category to investigate the search path of visitors and product name for the exact product that visitors purchased. 
+
+```
+-- The product with highest average number ordered by visitors is Google Kick Ball and is listed under category sports&fitness and fun.
+-- The same situation happened both in cities and countries.
+select als.city, als.productcategory, als.productname, round(avg(p.orderedquantity),2) as avgprooductordered
+from all_sessions als
+join products p on p.sku = als.productsku
+where city != 'not available in demo dataset'
+group by city, productcategory, productname
+order by avgprooductordered desc
+limit 5
+
+select als.country, als.productcategory, als.productname, round(avg(p.orderedquantity),2) as avgprooductordered
+from all_sessions als
+join products p on p.sku = als.productsku
+group by country, productcategory, productname
+order by avgprooductordered desc
+limit 10
+
+```
 
 
-SQL Queries:
 
-  	with category_info as (
-	select country as name,'country'as type, productcategory, avg(p.orderedquantity) as avgorderedproducts
-	from all_sessions aes
-	join products p on p.sku = aes.productsku
-	group by country, productcategory
-	union 
-	select city as name,'city'as type, productcategory, avg(p.orderedquantity) as avgorderedproducts
-	from all_sessions aes
-	join products p on p.sku = aes.productsku
-	group by city, productcategory
-	)
-
-	select name, type, productcategory,avgorderedproducts
-	from category_info
-	where type ='country'
-	order by avgorderedproducts desc
-	limit 5;
-
-
-Answer:
-
-<img width="603" alt="image" src="https://github.com/maybester/transforming-analyzing-data-in-SQL/assets/73912419/e0e6d18c-e5b3-470a-ac2c-efbc60e3f05b">
-<img width="608" alt="image" src="https://github.com/maybester/transforming-analyzing-data-in-SQL/assets/73912419/17b4c5d8-e95c-4ccf-a76f-f30bc10f5737">
-
-
-### Question #4: What is the top-selling product from each city/country? Can we find any pattern worthy of noting in the products sold?**
+### Question #4: What is the top-selling product from each city/country? Can we find any pattern worthy of noting in the products sold?
 
 
 SQL Queries:
