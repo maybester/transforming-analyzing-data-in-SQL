@@ -9,21 +9,20 @@
 
 
 
-### QA Process:
 
 ### Data quality dimensions
 
-### Completeness
+#### Completeness
 > data source is lack of consistency since there are content in different language in pagetitle column.
 
-### Validity
+#### Validity
 > duplicates value existed in fullvisitor id columns which make table unable to have unique identifier for creating primary keys.
 
-### Accuracy
+#### Accuracy
 > data source has missing values in multiple columns in tables analytics and all_sessions.
 
-### Timeliness
+#### Timeliness
 
-### Consistency
+#### Consistency
 
-### Uniqueness
+#### Uniqueness
