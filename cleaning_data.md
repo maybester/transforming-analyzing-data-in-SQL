@@ -1,4 +1,4 @@
-## Part 2: Data Cleaning
+## Part 1: Data Cleaning
 
 > cleaning_data.md file
 > * Fill out this file with a description of the issues that will be addressed by cleaning the data
